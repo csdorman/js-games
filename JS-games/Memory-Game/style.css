@@ -1,0 +1,14 @@
+/* Grid style */
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    height: 300px;
+    width: 422px;
+    box-decoration-break: clone;
+    padding: 10px;
+    margin: 10px;
+}
+
+img {
+    padding: 2px;
+}
