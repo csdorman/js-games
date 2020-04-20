@@ -9,6 +9,33 @@
     margin: 10px;
 }
 
+#status {
+    display: flex;
+    max-width: 422px;
+    padding: 10px;
+    margin: 10px;
+    background-color: yellow;
+    line-height: 1.5;
+    border: .1em solid; black;
+    box-shadow: 5px 5px 5px lightgrey;
+}
+
+#score {
+    font-family: monospace;
+    font-size: 1em;
+    font-weight: 100;
+    text-shadow: 1px 1px 2px lightgrey;
+    padding: 1em;
+}
+
+#result {
+    font-family: sans-serif;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-shadow: 3px 3px 3px lightgrey;
+    padding: 1em;
+}
+
 img {
     padding: 2px;
 }
