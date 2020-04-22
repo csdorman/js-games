@@ -9,6 +9,14 @@
     margin: 10px;
 }
 
+#titlebar {
+    display: flex;
+    max-width: 600px;
+    padding: 10px;
+    margin: 10px;
+    align-items: center;
+}
+
 #status {
     display: flex;
     max-width: 422px;
