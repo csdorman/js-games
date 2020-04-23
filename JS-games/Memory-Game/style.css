@@ -29,12 +29,30 @@
     padding: 1em;
 }
 
+a {
+    color: #black;
+    font-family: monospace;
+    font-size: 16px;
+    text-decoration: none;
+    border: .1em solid #543832;
+    padding: 1em;
+}
+
 /* Layout */
+
+body {
+    background-color: #a4b5d0;
+}
 
 #footer {
     display: flex;
-    padding: 1em 2em;
+    padding: 2em;
+    max-width: 422px;
     margin: auto;
+    border: .1em solid #543832;
+    box-shadow: 5px 5px 5px #543832;
+    justify-content: center;
+    background: #c3afbe;
 }
 
 #status {
@@ -42,10 +60,10 @@
     max-width: 422px;
     padding: 1em;
     margin: auto;
-    background-color: yellow;
+    background-color: #c3afbe;
     line-height: 1.5;
-    border: .1em solid; black;
-    box-shadow: 5px 5px 5px lightgrey;
+    border: .1em solid #543832;
+    box-shadow: 5px 5px 5px #543832;
 }
 
 .grid {
