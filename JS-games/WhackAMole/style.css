@@ -1,3 +1,35 @@
-body {
-    background-color:black;
+
+/* Variables */
+:root {
+    --clr-light: #f4f2e4;
+    --clr-dark: #373a34;
+    --clr-accent: #bd3d45;
+    --clr-accent-light: #a89e8f;
+    --clr-accent-dark: #565a66;
 }
+
+/* Typography */
+
+/* Layout */
+
+body {
+    background-color: var(--clr-light);
+}
+
+.square {
+    width: 200px;
+    height: 200px;
+    border-style: solid;
+    border-color: var(--clr-accent-dark);
+}
+
+.grid {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: center;
+    width: 618px;
+    height: 618px;
+}
+
+
