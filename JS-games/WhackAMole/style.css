@@ -10,10 +10,48 @@
 
 /* Typography */
 
+#titlebar h1 {
+    font-style: 48px;
+    font-family: sans-serif;
+    color: var(--clr-dark);
+}
+
+#status {
+    font-family: monospace;
+    font-size: 1em;
+    font-weight: 100;
+    text-shadow: 1px 1px 2px var(--clr-accent-light);
+    padding: 1em;
+}
+
+#score {
+    font-weight: 600;
+    font-size: 1.5em;
+}
+
 /* Layout */
 
 body {
     background-color: var(--clr-light);
+}
+
+#titlebar {
+    text-align: center;
+    max-width: 1000px;
+    padding: 1em;
+    margin: 1em;
+    align-items: center;
+}
+
+#status {
+    display: flex;
+    max-width: 700px;
+    padding: 1em;
+    margin: auto;
+    background-color: var(--clr-accent-light);
+    line-height: 1.5;
+    border: .1em solid var(--clr-dark);
+    box-shadow: 5px 5px 5px var(--clr-dark);
 }
 
 .square {
@@ -30,6 +68,7 @@ body {
     align-content: center;
     width: 618px;
     height: 618px;
+    margin: auto;
 }
 
 .mole {
