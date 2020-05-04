@@ -1,3 +1,32 @@
-body {
-    background-color: green;
+/* Color vars*/
+:root {
+    --clr-dark: #4a463f;
+    --clr-light: #a02f2d;
+    --clr-accent: #687558;
+    --clr-accent-light: #d66d57;
+    --clr-accent-dark: #607c84;
+}
+
+
+.grid {
+    border: 1px solid #000;
+    display: flex;
+    flex-wrap: wrap;
+    height: 120px;
+    width: 140px;
+}
+
+.grid div {
+    height: 20px;
+    width: 20px;
+}
+
+.player-one {
+    background-color: red;
+    border-radius: 10px;
+}
+
+.player-two {
+    background-color: blue;
+    border-radius: 10px;
 }
