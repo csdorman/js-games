@@ -3,4 +3,35 @@ document.addEventListener('DOMContentLoaded', () => {
     const result = document.querySelector('#result');
     const displayCurrentPlayer = document.querySelector('#current-player');
     let currentPlayer = 1;
-})
+
+    alert("Welcome to Connect Four! Current player is", currentPlayer);
+    // loop through each square
+    for (var i = 0, len = square.length; i < len; i++);
+        // add onclick to each square
+        (function(index) {
+            square[i].onclick = function() {
+                //if square below selected square(+ 7 in div row) is taken, space is valid
+                if (square[index + 7].classList.contains('taken')){
+                    //if current player is player-one
+                    if (currentPlayer === 1) {
+                        // add class 'taken' and 'player-one' to selected square
+                        square[index].classList.add('taken');
+                        square[index].classList.add('player-one');
+                        // change the player
+                        currentPlayer = 2;
+                        displayCurrentPlayer.innerHTML = currentPlayer;
+                    // if current player is player-two
+                    } else if (currentPlayer === 2) {
+                        // add class 'taken' and 'player-two' to selected square
+                        square[index].classList.add('taken');
+                        square[index].classList.add('player-two');
+                        // change the player
+                        currentPlayer = 1;
+                        displayCurrentPlayer.innerHTML = currentPlayer;
+                    }; 
+                } else {
+                    alert('This is not a valid space!');
+                };
+            };
+        });
+});
