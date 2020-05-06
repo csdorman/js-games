@@ -3,12 +3,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const result = document.querySelector('#result');
     const displayCurrentPlayer = document.querySelector('#current-player');
     let currentPlayer = 1;
+    console.log("Current player is " + currentPlayer);
 
-    alert("Welcome to Connect Four! Current player is", currentPlayer);
+    //display player 1 on load
+    displayCurrentPlayer.innerHTML = currentPlayer;
     // loop through each square
-    for (var i = 0, len = square.length; i < len; i++);
+    for (var i = 0, len = square.length; i < len; i++); {
+        console.log(i);
+        square[i].onclick = console.log(i);
         // add onclick to each square
-        (function(index) {
+        (function(index){
             square[i].onclick = function() {
                 //if square below selected square(+ 7 in div row) is taken, space is valid
                 if (square[index + 7].classList.contains('taken')){
@@ -28,10 +32,14 @@ document.addEventListener('DOMContentLoaded', () => {
                         // change the player
                         currentPlayer = 1;
                         displayCurrentPlayer.innerHTML = currentPlayer;
-                    }; 
+                    };
                 } else {
                     alert('This is not a valid space!');
                 };
             };
         });
+    };
+
+
+    
 });
