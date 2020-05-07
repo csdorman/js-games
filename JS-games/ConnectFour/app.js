@@ -9,13 +9,16 @@ document.addEventListener('DOMContentLoaded', () => {
     displayCurrentPlayer.innerHTML = currentPlayer;
     // loop through each square
     for (var i = 0, len = square.length; i < len; i++); {
-        console.log(i);
-        square[i].onclick = console.log(i);
         // add onclick to each square
+        //Attempting to try and get clicks to work ANYWHERE!
+        document.getElementByClass('square').onclick = function notify(){
+            alert('Page click detected');   
+        }
+        // End click testing attempt
         (function(index){
             square[i].onclick = function() {
                 //if square below selected square(+ 7 in div row) is taken, space is valid
-                if (square[index + 7].classList.contains('taken')){
+                if (square[i+7].classList.contains('taken')){
                     //if current player is player-one
                     if (currentPlayer === 1) {
                         // add class 'taken' and 'player-one' to selected square
