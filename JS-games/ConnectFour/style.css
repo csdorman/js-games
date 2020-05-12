@@ -1,10 +1,48 @@
 /* Color vars*/
 :root {
     --clr-dark: #4a463f;
-    --clr-light: #a02f2d;
+    --clr-light: #d66d57;
     --clr-accent: #687558;
-    --clr-accent-light: #d66d57;
+    --clr-accent-light: #a02f2d;
     --clr-accent-dark: #607c84;
+}
+
+/* Typography */
+h1 {
+    font-size: 2.5em;
+    font-family: serif;
+    font-weight: bold;
+}
+h3 {
+    display: flex;
+    font-family: sans-serif;
+    font-size: 1.5em;
+    font-weight: normal;
+}
+
+h3 #result {
+    font-size: 2em;
+    background-color: var(--clr-accent-light);
+    color: var(--clr-accent-dark);
+}
+
+h3 #current-player {
+    font-family: monospace;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--clr-accent-dark);
+    background: var(--clr-dark);
+}
+
+/* Layout */
+body {
+    background: var(--clr-light);
+}
+
+#info {
+    display: block;
+    align-items: center;
+    margin: 1em auto;
 }
 
 
@@ -14,6 +52,8 @@
     flex-wrap: wrap;
     height: 120px;
     width: 140px;
+    background: white;
+    margin: auto;
 }
 
 .grid div {
