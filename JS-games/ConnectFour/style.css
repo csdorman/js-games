@@ -12,9 +12,9 @@ h1 {
     font-size: 2.5em;
     font-family: serif;
     font-weight: bold;
+    text-transform: uppercase;
 }
 h3 {
-    display: flex;
     font-family: sans-serif;
     font-size: 1.5em;
     font-weight: normal;
@@ -34,17 +34,37 @@ h3 #current-player {
     background: var(--clr-dark);
 }
 
+a {
+    color: var(--clr-dark);
+    font-size: 1.2em;
+}
+
 /* Layout */
 body {
     background: var(--clr-light);
 }
 
 #info {
-    display: block;
-    align-items: center;
+    width: 375px;
     margin: 1em auto;
+    border: 2px solid var(--clr-accent-dark);
+    padding: .2em;
 }
 
+#title {
+    display: flex;
+    width: 350px;
+    margin: .2em auto;
+}
+
+#turn, #win {
+    display: flex;
+    width: 300px;
+    margin: 0 auto;
+    padding: 0;
+    align-items: center;
+    justify-content: space-around;
+}
 
 .grid {
     border: 1px solid #000;
@@ -61,6 +81,11 @@ body {
     width: 20px;
 }
 
+#footer {
+    background-color: var(--clr-accent-light);
+    margin: 1em auto;
+    padding: 1em;
+}
 .player-one {
     background-color: red;
     border-radius: 10px;
