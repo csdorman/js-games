@@ -47,14 +47,16 @@ body {
 #info {
     width: 375px;
     margin: 1em auto;
-    border: 2px solid var(--clr-accent-dark);
     padding: .2em;
+    background-color: var(--clr-accent-dark);
+    box-shadow: 2px 2px 4px black;
 }
 
 #title {
     display: flex;
     width: 350px;
     margin: .2em auto;
+    justify-content: space-around;
 }
 
 #turn, #win {
@@ -91,10 +93,19 @@ body {
     width: 20px;
 }
 #footer {
-    background-color: var(--clr-accent-light);
+    width: 375px;
+    background-color: var(--clr-accent-dark);
     margin: 1em auto;
     padding: 1em;
+    box-shadow: 2px 2px 4px black;
 }
+
+#footer a {
+    display: flex;
+    margin: .2em auto;
+    justify-content: space-around;
+}
+
 .grid .player-one {
     background-color: red;
     border-radius: 10px;
