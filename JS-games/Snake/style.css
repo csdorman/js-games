@@ -24,7 +24,8 @@ h2 {
 
 h3 {
     font-family: sans-serif;
-    font-size: 32px;
+    font-style: italic;
+    font-size: 12px;
 }
 /* Snake Game Styling */
 
@@ -33,6 +34,7 @@ h3 {
     flex-wrap: wrap;
     width: 200px;
     height: 200px;
+    margin: auto;
     border: 2px solid var(--clr-dark);
 }
 
@@ -47,4 +49,40 @@ h3 {
 
 .apple {
     background-color: var(--clr-accent);
+}
+/* Page layout */
+
+.header {
+    display: block;
+    width: 400px;
+    margin: auto;
+    text-align: center;
+}
+
+.btn {
+    width: 200px;
+    margin: auto;
+    background: var(--clr-light);
+    border: 2px solid var(--clr-dark);
+    border-radius: 10px;
+    color: var(--clr-accent-light);
+}
+
+.btn:hover {
+    background: var(--clr-accent
+);
+}
+
+.footer {
+    display: block;
+    width: 350px;
+    margin: auto;
+    text-align: center;
+}
+
+.return {
+    display: block;
+    width: 350px;
+    margin: auto;
+    background: var(--clr-accent-light);
 }
