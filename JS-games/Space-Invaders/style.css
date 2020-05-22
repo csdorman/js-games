@@ -1,0 +1,41 @@
+:root {
+    /*color vars go here*/
+    --clr-light: #eee5e3;
+    --clr-dark: #161f38;
+    --clr-accent: #d7613e;
+    --clr-accent-light: #6b6492;
+    --clr-accent-dark: #613839;
+}
+
+body {
+    background: var(--clr-light);
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    border: solid 1px;
+    width: 300px;
+    height: 300px;
+}
+
+.grid div {
+    width: 20px;
+    height: 20px;
+}
+
+.shooter {
+    background-color: var(--clr-accent-light);
+}
+
+.invader {
+    background-color: purple;
+}
+
+.boom {
+    background-color: var(--clr-accent);
+}
+
+.laser {
+    background-color: yellow;
+}
