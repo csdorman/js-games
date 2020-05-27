@@ -28,10 +28,10 @@ document.addEventListener('DOMContentLoaded', () => {
         switch(e.keyCode) {
         case 37:
             if(currentShooterIndex % width !== 0) currentShooterIndex -=1;
-            break;
+            break
         case 39:
             if(currentShooterIndex % width < width -1) currentShooterIndex +=1;
-            break;
+            break
         }
         squares[currentShooterIndex].classList.add('shooter');
     }
@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
             squares[currentLaserIndex].classList.remove('laser');
             currentLaserIndex -= width;
             squares[currentLaserIndex].classList.add('laser');
-            if(squares[currentLaserIndex].contains('invader')){
+            if(squares[currentLaserIndex].classList.contains('invader')){
                 squares[currentLaserIndex].classList.remove('invader');
                 squares[currentLaserIndex].classList.remove('laser');
                 squares[currentLaserIndex].classList.add('boom');
@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 clearInterval(laserId);
 
                 const alienTakenDown = alienInvaders.indexOf(currentLaserIndex);
-                alienInvadersTakenDown.push(aliendTakenDown);
+                alienInvadersTakenDown.push(alienTakenDown);
                 result ++;
                 resultDisplay.textContent = result;
             }
@@ -120,11 +120,18 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        document.addEventListener('keyup', e => {
-            if (e.keyCode === 32) {
-                laserId = setInterval(moveLaser,100);
-            }
-        });
+        // document.addEventListener('keyup', e => {
+        //     if (e.keyCode === 32) {
+        //         laserId = setInterval(moveLaser,100);
+        //     }
+        // });
+
+        // Need to use switch case (for some reason) instead of eventListener
+        switch(e.keyCode) {
+        case 32:
+            laserId = setInterval(moveLaser, 100);
+            break;
+        }
     }
     document.addEventListener('keyup', shoot);
     
