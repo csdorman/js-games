@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let width = 15;
     let currentShooterIndex = 202;
     let currentInvaderIndex = 3;
-    let alienInvaderTakenDown = [];
+    let alienInvadersTakenDown = [];
     let result = 0;
     let direction = 1;
 //    let invaderId
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // left edge of the invader block is the first invader in the block
         const leftEdge = alienInvaders[0] % width === 0;
         // right edge is length of invader block divided by the width of the board
-        const rightEdge = alienInvaders[alienInvaders.length -1] % width === width -1;
+        const rightEdge = alienInvaders[alienInvaders.length - 1] % width === width -1;
 
         if((leftEdge && direction === -1) || (rightEdge && direction === 1)){
             direction = width;
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         for (let i = 0; i <= alienInvaders.length -1; i++) {
             if (!alienInvadersTakenDown.includes(i)){
-                squares[alien.Invaders[i]].classList.add('invader'); 
+                squares[alienInvaders[i]].classList.add('invader'); 
             }
             squares[alienInvaders[i]].classList.add('invader');
         }
@@ -134,5 +134,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     document.addEventListener('keyup', shoot);
-    
 });
