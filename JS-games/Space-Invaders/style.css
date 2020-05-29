@@ -1,3 +1,4 @@
+/* Color variables */
 :root {
     /*color vars go here*/
     --clr-light: #eee5e3;
@@ -6,9 +7,42 @@
     --clr-accent-light: #6b6492;
     --clr-accent-dark: #613839;
 }
+/* Typography */
+
+h1 {
+    font-family: sans-serif;
+    font-size: 4em;
+    color: var(--clr-dark);
+    margin: auto;
+}
+
+h2 {
+    font-family: monospace;
+    font-size: 1.1em;
+    color: var(--clr-accent-dark);
+    margin: 1em auto;
+}
+
+h3 {
+    font-family: sans-serif;
+    font-size: 1.5em;
+    color: var(--clr-accent-dark);
+    margin: auto;
+}
+/* Page Layout */
 
 body {
     background: var(--clr-light);
+}
+
+.titlebar {
+    display: grid;
+    flex-wrap: wrap;
+    width: 500px;
+    margin: 1em auto;
+    padding: 1em;
+    border: 1px solid var(--clr-accent);
+    border-radius: 10px;
 }
 
 .grid {
@@ -17,6 +51,7 @@ body {
     border: solid 1px;
     width: 300px;
     height: 300px;
+    margin: auto;
 }
 
 .grid div {
@@ -24,17 +59,20 @@ body {
     height: 20px;
 }
 
+/* Game Assets */
+
 .shooter {
     background-color: var(--clr-accent-light);
+    transform: skewX(45);
 }
 
 .invader {
-    background-color: purple;
+    background-color: var(--clr-accent);
     border-radius: 10px;
 }
 
 .boom {
-    background-color: var(--clr-accent);
+    background-color: orange;
 }
 
 .laser {
