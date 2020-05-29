@@ -60,9 +60,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         for (let i = 0; i <= alienInvaders.length -1; i++) {
             if (!alienInvadersTakenDown.includes(i)){
-                squares[alienInvaders[i]].classList.add('invader'); 
+                squares[alienInvaders[i]].classList.add('invader');
             }
-            squares[alienInvaders[i]].classList.add('invader');
+            //squares[alienInvaders[i]].classList.add('invader');
         }
 
         // Game over conditions
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if(squares[currentShooterIndex].classList.contains('invader', 'shooter')) {
             resultDisplay.textContent = 'Game Over';
             squares[currentShooterIndex].classList.add('boom');
-            clearInterval(invaderID);
+            clearInterval(invaderId);
         }
 
         // If any Invaders reach the very bottom of the board, end game
