@@ -27,6 +27,11 @@ h3 {
     font-style: italic;
     font-size: 12px;
 }
+
+.footer a {
+    text-decoration: none;
+    font-family: monospace;
+}
 /* Snake Game Styling */
 
 .grid {
@@ -76,13 +81,13 @@ h3 {
 .footer {
     display: block;
     width: 350px;
-    margin: auto;
-    text-align: center;
+    margin: 1em auto;
 }
 
 .return {
     display: block;
-    width: 350px;
+    width: 400px;
     margin: auto;
+    padding: 1em;
     background: var(--clr-accent-light);
 }
