@@ -1,0 +1,41 @@
+
+/* Color Palatte */
+:root {
+    --clr-dark: #474141;
+    --clr-light: #f3e9b2;
+    --clr-accent: #b13d58;
+    --clr-accent-dark: #68c6b5;
+    --clr-accent-light: #db8235;
+}
+
+/* Typography */
+
+/* Page Layout */
+
+.grid {
+    border: 1px solid;
+    display: flex;
+    flex-wrap: wrap;
+    height: 180px;
+    width: 180px;
+}
+
+.grid div {
+    height: 20px;
+    width: 20px;
+}
+
+.ending-block {
+    background-color: var(--clr-accent-light);
+}
+
+.starting-block {
+    background-color: var(--clr-accent-light);
+}
+
+.frog {
+    background-color: green; 
+}
+body {
+    background: var(--clr-light);
+}
