@@ -146,5 +146,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    {})
+})
 
