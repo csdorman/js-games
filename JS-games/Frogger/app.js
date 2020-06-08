@@ -4,12 +4,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const timeLeft = document.querySelector('#time-left');
     const result = document.querySelector('#result');
     const startBtn = document.querySelector('#button');
-    const carsLeft = document.querySelector('.car-left');
-    const carsRight = document.querySelector('.car-right');
-    const logsLeft = document.querySelector('.log-left');
-    const logsRight = document.querySelector('.log-right');
+    const carsLeft = document.querySelectorAll('.car-left');
+    const carsRight = document.querySelectorAll('.car-right');
+    const logsLeft = document.querySelectorAll('.log-left');
+    const logsRight = document.querySelectorAll('.log-right');
     const width = 9;
     let currentIndex = 76;
+    let currentTime = 30;
     let timerId ;
 
     //render frog on starting block
@@ -18,24 +19,25 @@ document.addEventListener('DOMContentLoaded', () => {
     //keyboard controls for frog movement
     function moveFrog(e) {
         squares[currentIndex].classList.remove('frog');
-        switch(e.keyCoded) {
+        switch(e.keyCode) {
         case 37:
             if(currentIndex % width !== 0) currentIndex -=1;
             break;
         case 38:
-            if(currentIndex - width >=0) currrentIndex -= width;
+            if(currentIndex - width >= 0) currentIndex -= width;
             break;
         case 39:
-            if(currentIndex + 1 <= (width*width)) currentIndex += 1;
+            if(currentIndex + 1 < (width*width)) currentIndex += 1;
             break;
         case 40:
-            if(currentIndex + width <= (width*width)) currentIndex += width;
+            if(currentIndex + width < width * width) currentIndex += width;
             break;
         }
-        square[currentIndex].classList.add('frog');
+        squares[currentIndex].classList.add('frog');
         lose();
         win();
     }
+
     // Function to move animate car divs
     function autoMoveCars() {
         carsLeft.forEach(carLeft => moveCarLeft(carLeft));
@@ -145,6 +147,53 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    //rules to lose
+    function lose() {
+        if ((currentTime === 0) || (squares[currentIndex].classList.contains('c1')) || (squares[currentIndex].classList.contains('l5')) || (squares[currentIndex].classList.contains('l4'))) {
+            result.innerHTML = 'Sorry, you lost.';
+            squares[currentIndex].classList.remove('frog');
+            clearInterval(timerId);
+            document.removeEventListener('keyup', moveFrog);
+        }
+    }
 
-})
+    //move the frog with logLeft
+    function moveWithLogLeft() {
+        if (currentIndex >= 27 && currentIndex < 35) {
+            squares[currentIndex].classList.remove('frog');
+            currentIndex += 1;
+            squares[currentIndex].classList.add('frog');
+        }
+    }
+
+    //move the frog with logRight
+    function moveWithLogRight() {
+        if (currentIndex >= 18 && currentIndex < 26) {
+            squares[currentIndex].classList.remove('frog');
+            currentIndex += 1;
+            squares[currentIndex].classList.add('frog');
+        }
+    }
+
+    //all functions that move pieces
+    function movePieces() {
+        autoMoveCars();
+        autoMoveLogs();
+        moveWithLogLeft();
+        moveWithLogRight();
+        currentTime--;
+        timeLeft.textContent = currentTime;
+        lose();
+    }
+
+    // start and pause game
+    startBtn.addEventListener('click', () => {
+        if(timerId) {
+            clearInterval(timerId);
+        } else {
+            timerId = setInterval(movePieces, 1000);
+            document.addEventListener('keyup', moveFrog);
+        }
+    });
+});
 
