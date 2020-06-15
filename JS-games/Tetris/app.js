@@ -15,11 +15,50 @@ document.addEventListener('DOMContentLoaded', () => {
         [1, width +1, width * 2, width * 2 +1],
         [width, width * 2, width * 2 + 1, width * 2 + 2]
     ];
-    // Use guide at 35:10 to create these arrays
-    const zTetromino = [];
-    const tTetromino = [];
-    const oTetromino = [];
-    const iTetromino = [];
-    // Resume video at 37:45 after arrays are done
+    const zTetromino = [
+        [width * 2, width + 1, width * 2 + 1, width + 2],
+        [0, width, width + 1, width * 2 + 1],
+        [width * 2, width + 1, width * 2 + 1, width + 2],
+        [0, width, width + 1, width * 2 + 1]
+    ];
+    const tTetromino = [
+        [1, width, width + 1, width + 2],
+        [1, width + 1, width + 2, width * 2 + 1],
+        [width, width + 1, width + 2, width * 2 + 1],
+        [1, width, width + 1, width * 2 + 1]
+    ];
+    const oTetromino = [
+        [0, 1, width, width + 1],
+        [0, 1, width, width + 1],
+        [0, 1, width, width + 1],
+        [0, 1, width, width + 1]
+    ];
+    const iTetromino = [
+        [1, width + 1, width * 2 + 1, width * 3 + 1],
+        [width, width + 1, width + 2, width + 3],
+        [1, width + 1, width * 2 + 1, width * 3 + 1],
+        [width, width + 1, width + 2, width + 3]
+    ];
+    const theTetrominoes = [lTetromino, zTetromino, tTetromino, oTetromino, iTetromino];
+    let currentPosition = 4;
+    let currentRotation = 0;
+
+    //randomly select a Tetromino and first rotation
+    let random = Math.floor(Math.random()*theTetrominoes.length);
+    let current = theTetrominoes[random][0];
+
+    // draw the Tetromino
+    function draw() {
+        current.forEach(index => {
+            squares[currentPosition + index].classList.add('tetromino');
+        });
+    }
+    // remove the Tetromino from screen
+    function undraw() {
+        current.forEach(index => {
+            squares[currentPosition + index].classList.remove('tetromino');
+        });
+    }
+    draw();
 });
 
