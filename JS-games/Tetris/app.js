@@ -59,6 +59,29 @@ document.addEventListener('DOMContentLoaded', () => {
             squares[currentPosition + index].classList.remove('tetromino');
         });
     }
-    draw();
+
+    //move tetromino 1/second
+    timerId = setInterval(moveDown, 1000);
+
+    //move the tetromino
+    function moveDown() {
+        undraw();
+        currentPosition += width;
+        draw();
+        freeze();
+    }
+
+    //stop the tetromino on the bottom row
+    function freeze() {
+        if(current.some(index => squares[currentPostion + index + width].classList.contains('taken'))) {
+            current.forEach(index => squares[currentPostion + index].classList.add('taken'));
+            // create new tetromino
+            random = Math.floor(Math.random() * theTetrominoes.length);
+            current = theTetrominoes[random][currentRotation];
+            currentPostion = 4;
+            draw();
+        };
+    }
+
 });
 
