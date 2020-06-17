@@ -39,13 +39,17 @@ document.addEventListener('DOMContentLoaded', () => {
         [1, width + 1, width * 2 + 1, width * 3 + 1],
         [width, width + 1, width + 2, width + 3]
     ];
+
+    // create array for tetrominoes
     const theTetrominoes = [lTetromino, zTetromino, tTetromino, oTetromino, iTetromino];
+
+    // set start position on grid and initial rotation
     let currentPosition = 4;
     let currentRotation = 0;
 
     //randomly select a Tetromino and first rotation
     let random = Math.floor(Math.random()*theTetrominoes.length);
-    let current = theTetrominoes[random][0];
+    let current = theTetrominoes[random][currentRotation];
 
     // draw the Tetromino
     function draw() {
@@ -73,12 +77,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //stop the tetromino on the bottom row
     function freeze() {
-        if(current.some(index => squares[currentPostion + index + width].classList.contains('taken'))) {
-            current.forEach(index => squares[currentPostion + index].classList.add('taken'));
+        if(current.some(index => squares[currentPosition + index + width].classList.contains('taken'))) {
+            current.forEach(index => squares[currentPosition + index].classList.add('taken'));
             // create new tetromino
             random = Math.floor(Math.random() * theTetrominoes.length);
             current = theTetrominoes[random][currentRotation];
-            currentPostion = 4;
+            currentPosition = 4;
             draw();
         };
     }
