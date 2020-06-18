@@ -67,6 +67,21 @@ document.addEventListener('DOMContentLoaded', () => {
     //move tetromino 1/second
     timerId = setInterval(moveDown, 1000);
 
+    // assign controls to arrow keys
+    function control(e) {
+        if(e.keyCode === 37) { //left arrow
+            moveLeft();
+        } else if(e.keyCode === 38) { //up arrow
+            //rotate
+        } else if(e.keyCode === 39) { //right arrow
+            // move right
+            moveRight();
+        } else if(e.keyCode === 40) { //down arrow
+            moveDown();
+        }
+    }
+    document.addEventListener('keyup', control);
+
     //move the tetromino
     function moveDown() {
         undraw();
@@ -87,5 +102,26 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     }
 
+    // move tetromino left - unless it is at the edge or blocked
+    function moveLeft() {
+        undraw();
+        const isAtLeftEdge = current.some(index => (currentPosition + index) % width === 0);
+        if(!isAtLeftEdge) currentPosition -= 1;
+        if(current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
+            currentPosition +=1;
+        }
+        draw();
+    }
+
+    // move the tetromino right - unless it is at the edge or blocked
+    function moveRight() {
+        undraw();
+        const isAtRightEdge = current.some(index => (currentPosition + index) % width === width -1);
+        if(!isAtRightEdge) currentPosition += 1;
+        if(current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
+            currentPosition -= 1;
+        }
+        draw();
+    }
 });
 
