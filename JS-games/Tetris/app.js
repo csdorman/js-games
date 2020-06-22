@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // show up-next tetromino in the mini-grid display
     const displaySquares = document.querySelectorAll('.mini-grid div');
     const displayWidth = 4;
-    let displayIndex = 0;
+    const displayIndex = 0;
 
     // the tetrominoes without rotations
     const upNextTetrominoes = [
@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function displayShape() {
         // remove any trace of a tetromino from the entire grid
         displaySquares.forEach(square => {
-            squares.classList.remove('tetromino');
+            square.classList.remove('tetromino');
         });
         upNextTetrominoes[nextRandom].forEach(index => {
             displaySquares[displayIndex + index].classList.add('tetromino');
