@@ -139,17 +139,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // show up-next tetromino in the mini-grid display
-    const displaySquares = document.querySelectorAll('.mini-grid div');
+    //const displaySquares = document.querySelectorAll('.mini-grid div');
+    let displaySquares = Array.from(document.querySelectorAll('.mini-grid div'))
     const displayWidth = 4;
     const displayIndex = 0;
 
     // the tetrominoes without rotations
     const upNextTetrominoes = [
-        [1, width + 1, width * 2 + 1, 2], //lTetromino
-        [width * 2, width + 1, width * 2 + 1, width + 2], //zTetromino
-        [1, width, width + 1, width + 2], //tTetromino
-        [0, 1, width, width + 1], //oTetromino
-        [1, width + 1, width * 2 + 1, width * 3 + 1] //iTetromino
+        [1, displayWidth + 1, displayWidth * 2 + 1, 2], //lTetromino
+        [displayWidth * 2, displayWidth + 1, displayWidth * 2 + 1, displayWidth + 2], //zTetromino
+        [1, displayWidth, displayWidth + 1, displayWidth + 2], //tTetromino
+        [0, 1, displayWidth, displayWidth + 1], //oTetromino
+        [1, displayWidth + 1, displayWidth * 2 + 1, displayWidth * 3 + 1] //iTetromino
     ];
 
     // display the shape in the mini-grid
