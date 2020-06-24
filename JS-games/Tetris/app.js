@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // define the width of the board
     const width = 10;
     let nextRandom = 0;
+    let timerId
 
     // The Tetromino shapes
     const lTetromino = [
@@ -66,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     //move tetromino 1/second
-    timerId = setInterval(moveDown, 1000);
+    //timerId = setInterval(moveDown, 1000);
 
     // assign controls to arrow keys
     function control(e) {
@@ -140,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // show up-next tetromino in the mini-grid display
     //const displaySquares = document.querySelectorAll('.mini-grid div');
-    let displaySquares = Array.from(document.querySelectorAll('.mini-grid div'))
+    let displaySquares = Array.from(document.querySelectorAll('.mini-grid div'));
     const displayWidth = 4;
     const displayIndex = 0;
 
@@ -163,5 +164,18 @@ document.addEventListener('DOMContentLoaded', () => {
             displaySquares[displayIndex + index].classList.add('tetromino');
         });
     }
+
+    // add functionlity to button
+    startBtn.addEventListener('click', () => {
+        if (timerId){
+            clearInterval(timerId)
+            timerId = null
+        } else {
+            draw()
+            timerId = setInterval(moveDown, 1000)
+            nextRandom = Math.floor(Math.random() * theTetrominoes.length)
+            displayShape()  
+        }
+    })
 });
 
