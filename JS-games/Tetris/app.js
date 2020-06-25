@@ -8,7 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // define the width of the board
     const width = 10;
     let nextRandom = 0;
-    let timerId
+    let timerId;
+    let score = 0;
 
     // The Tetromino shapes
     const lTetromino = [
@@ -137,6 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         current = theTetrominoes[random][currentRotation];
         draw();
+        addScore();
     }
 
     // show up-next tetromino in the mini-grid display
@@ -168,14 +170,35 @@ document.addEventListener('DOMContentLoaded', () => {
     // add functionlity to button
     startBtn.addEventListener('click', () => {
         if (timerId){
-            clearInterval(timerId)
-            timerId = null
+            clearInterval(timerId);
+            timerId = null;
         } else {
-            draw()
-            timerId = setInterval(moveDown, 1000)
-            nextRandom = Math.floor(Math.random() * theTetrominoes.length)
-            displayShape()  
+            draw();
+            timerId = setInterval(moveDown, 1000);
+            nextRandom = Math.floor(Math.random() * theTetrominoes.length);
+            displayShape();
         }
-    })
+    });
+
+    // add score
+    function addScore(){
+        for (let i=0; i< 199; i += width) {
+            const row = [i, i+1, i+2, i+3, i+4, i+5, i+6, i+7, i+8, i+9];
+
+            if (row.every(index => squares[index].classList.contains('taken'))) {
+                score += 10;
+                scoreDisplay.innerHTML = score;
+                row.forEach(index =>  {
+                    squares[index].classList.remove('taken');
+                    squares[index].classList.remove('tetromino');
+                });
+                
+                const squaresRemoved = squares.splice(i, width);
+                console.log(squaresRemoved);
+                squares = squaresRemoved.concat(squares);
+                squares.forEach(cell => grid.appendChild(cell));
+            }
+        }
+    }
 });
 
