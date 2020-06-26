@@ -18,12 +18,24 @@ document.addEventListener('DOMContentLoaded', () => {
         [1, width +1, width * 2, width * 2 +1],
         [width, width * 2, width * 2 + 1, width * 2 + 2]
     ];
+    const backLTetromino = [
+        [0, 1, width + 1, width * 2 + 1],
+        [width, width + 1, width + 2, 2],
+        [1, width + 1, width * 2 + 1, width * 2 + 2],
+        [width, width + 1, width + 2, width *2]
+    ]
     const zTetromino = [
         [width * 2, width + 1, width * 2 + 1, width + 2],
         [0, width, width + 1, width * 2 + 1],
         [width * 2, width + 1, width * 2 + 1, width + 2],
         [0, width, width + 1, width * 2 + 1]
     ];
+    const backZTetromino = [
+        [1, width, width + 1, width * 2],
+        [0, 1, width + 1, width + 2],
+        [1, width, width + 1, width * 2],
+        [0, 1, width + 1, width + 2]
+    ]
     const tTetromino = [
         [1, width, width + 1, width + 2],
         [1, width + 1, width + 2, width * 2 + 1],
@@ -44,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     // create array for tetrominoes
-    const theTetrominoes = [lTetromino, zTetromino, tTetromino, oTetromino, iTetromino];
+    const theTetrominoes = [lTetromino, backLTetromino, zTetromino, backZTetromino, tTetromino, oTetromino, iTetromino];
 
     // set start position on grid and initial rotation
     let currentPosition = 4;
@@ -66,9 +78,6 @@ document.addEventListener('DOMContentLoaded', () => {
             squares[currentPosition + index].classList.remove('tetromino');
         });
     }
-
-    //move tetromino 1/second
-    //timerId = setInterval(moveDown, 1000);
 
     // assign controls to arrow keys
     function control(e) {
@@ -104,6 +113,8 @@ document.addEventListener('DOMContentLoaded', () => {
             currentPosition = 4;
             draw();
             displayShape();
+            addScore();
+            gameOver();
         };
     }
 
@@ -138,7 +149,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         current = theTetrominoes[random][currentRotation];
         draw();
-        addScore();
     }
 
     // show up-next tetromino in the mini-grid display
@@ -150,7 +160,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // the tetrominoes without rotations
     const upNextTetrominoes = [
         [1, displayWidth + 1, displayWidth * 2 + 1, 2], //lTetromino
+        [0, 1, displayWidth + 1, displayWidth * 2 + 1], //backLTetromino
         [displayWidth * 2, displayWidth + 1, displayWidth * 2 + 1, displayWidth + 2], //zTetromino
+        [1, displayWidth, displayWidth + 1, displayWidth * 2], //backZTetromino
         [1, displayWidth, displayWidth + 1, displayWidth + 2], //tTetromino
         [0, 1, displayWidth, displayWidth + 1], //oTetromino
         [1, displayWidth + 1, displayWidth * 2 + 1, displayWidth * 3 + 1] //iTetromino
@@ -158,10 +170,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // display the shape in the mini-grid
     function displayShape() {
-        // remove any trace of a tetromino from the entire grid
+        // remove any trace of a tetromino from mini-grid
         displaySquares.forEach(square => {
             square.classList.remove('tetromino');
         });
+        // draw new upcoming tetromino on mini-grid
         upNextTetrominoes[nextRandom].forEach(index => {
             displaySquares[displayIndex + index].classList.add('tetromino');
         });
@@ -184,17 +197,17 @@ document.addEventListener('DOMContentLoaded', () => {
     function addScore(){
         for (let i=0; i< 199; i += width) {
             const row = [i, i+1, i+2, i+3, i+4, i+5, i+6, i+7, i+8, i+9];
-
+            // add 10 to score
             if (row.every(index => squares[index].classList.contains('taken'))) {
                 score += 10;
                 scoreDisplay.innerHTML = score;
+                // row removal
                 row.forEach(index =>  {
                     squares[index].classList.remove('taken');
                     squares[index].classList.remove('tetromino');
                 });
-                
+                // add new rows to top of grid
                 const squaresRemoved = squares.splice(i, width);
-                console.log(squaresRemoved);
                 squares = squaresRemoved.concat(squares);
                 squares.forEach(cell => grid.appendChild(cell));
             }
