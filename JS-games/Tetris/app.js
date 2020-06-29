@@ -10,6 +10,15 @@ document.addEventListener('DOMContentLoaded', () => {
     let nextRandom = 0;
     let timerId;
     let score = 0;
+    const colors = [
+        'orange',
+        'red',
+        'purple',
+        'green',
+        'blue',
+        'yellow',
+        'grey'
+    ]
 
     // The Tetromino shapes
     const lTetromino = [
@@ -70,12 +79,14 @@ document.addEventListener('DOMContentLoaded', () => {
     function draw() {
         current.forEach(index => {
             squares[currentPosition + index].classList.add('tetromino');
+            squares[currentPosition + index].style.backgroundColor = colors[random];
         });
     }
     // remove the Tetromino from screen
     function undraw() {
         current.forEach(index => {
             squares[currentPosition + index].classList.remove('tetromino');
+            squares[currentPosition + index].style.backgroundColor = '';
         });
     }
 
@@ -140,6 +151,31 @@ document.addEventListener('DOMContentLoaded', () => {
         draw();
     }
 
+    // no rotation if long/tall tetromino at edge of screen 
+    function isAtRight() {
+        return current.some(index => (currentPosition + index + 1) % width === 0);
+    }
+
+    function isAtLeft() {
+        return current.some(index => (currentPosition + index) % width === 0);
+    }
+
+    function checkRotatedPosition(P){
+        P = P || currentPosition;
+        if ((P+1) % width < 4) {
+            if (isAtRight()){
+                currentPosition += 1;
+                checkRotatedPosition(P);
+            }
+        }
+        else if (P % width > 5) {
+            if (isAtLeft()) {
+                currentPosition -= 1;
+                checkRotatedPosition;
+            }
+        }
+    }
+
     // rotate the tetromino
     function rotate() {
         undraw();
@@ -148,6 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
             currentRotation = 0;
         }
         current = theTetrominoes[random][currentRotation];
+        checkRotatedPosition();
         draw();
     }
 
@@ -173,10 +210,12 @@ document.addEventListener('DOMContentLoaded', () => {
         // remove any trace of a tetromino from mini-grid
         displaySquares.forEach(square => {
             square.classList.remove('tetromino');
+            square.style.backgroundColor = '';
         });
         // draw new upcoming tetromino on mini-grid
         upNextTetrominoes[nextRandom].forEach(index => {
             displaySquares[displayIndex + index].classList.add('tetromino');
+            displaySquares[displayIndex + index].style.backgroundColor = colors[nextRandom];
         });
     }
 
@@ -205,6 +244,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 row.forEach(index =>  {
                     squares[index].classList.remove('taken');
                     squares[index].classList.remove('tetromino');
+                    squares[index].style.backgroundColor = '';
                 });
                 // add new rows to top of grid
                 const squaresRemoved = squares.splice(i, width);
